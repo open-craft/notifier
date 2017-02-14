@@ -5,12 +5,12 @@ import platform
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME':  os.path.join(os.getenv('NOTIFIER_DB_DIR', '.'), 'notifier.db'),
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+        'ENGINE': os.getenv('NOTIFIER_DATABASE_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': os.getenv('NOTIFIER_DATABASE_NAME', os.path.join(os.getenv('NOTIFIER_DB_DIR', '.'), 'notifier.db')),
+        'USER': os.getenv('NOTIFIER_DATABASE_USER', ''),
+        'PASSWORD': os.getenv('NOTIFIER_DATABASE_PASSWORD', ''),
+        'HOST': os.getenv('NOTIFIER_DATABASE_HOST', ''),
+        'PORT': os.getenv('NOTIFIER_DATABASE_PORT', ''),
     }
 }
 
